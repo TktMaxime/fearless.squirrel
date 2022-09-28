@@ -1,5 +1,4 @@
-function update()
-{
+function update() {
     var delta = clock.getDelta(); // seconds.
     var moveDistance = 50 * delta; // 200 pixels per second
     var rotateAngle = Math.PI / 2 * delta * 2;   // pi/2 radians (90 degrees) per second
@@ -14,5 +13,11 @@ function update()
         player1.decelerate(moveDistance);
 
     player1.move();
+    player2.accelerate(1);
+    if (Math.floor(player2.position.x) >= 150 || Math.floor(player2.position.x) <= -100) {
+        player2.turnRight(Math.PI);
+        player2.accelerate(1);
+    }
+    player2.move();
     controls.update();
 }
