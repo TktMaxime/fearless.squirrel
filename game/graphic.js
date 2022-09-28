@@ -1,4 +1,4 @@
-function init() {
+function init(life = 3) {
     // set some camera attributes
     var VIEW_ANGLE = 45,
         ASPECT = WIDTH / HEIGHT,
@@ -31,8 +31,14 @@ function init() {
     tmpGround.position.y = 0;
     scene.add(tmpGround);
 
-    player1 = new Player("player1", 0xffff00, new THREE.Vector2(50, 0), 0);
+    if (life == 0)
+        life = 3;
+
+    player1 = new Player("player1", 0xffff00, new THREE.Vector2(50, 0), 0, life);
     scene.add(player1.graphic);
+
+    player2 = new Player("player2", 0xfff000, new THREE.Vector2(100, 0), 0);
+    scene.add(player2.graphic);
 
     light1 = new Light("sun", 0xffffff, "0,0,340");
     scene.add(light1);
